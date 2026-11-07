@@ -1,0 +1,69 @@
+{% extends "frontend/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_heading %}Dashboard{% endblock %}
+{% block page_subtitle %}A quick look at mock project activity{% endblock %}
+
+{% block content %}
+<section class="row g-3 mb-4">
+    {% for item in stats %}
+    <div class="col-12 col-sm-6 col-xl-3">
+        <article class="card metric-card h-100">
+            <div class="card-body">
+                <p class="metric-label">{{ item.label }}</p>
+                <h2 class="metric-value">{{ item.value }}</h2>
+                <small class="text-muted">{{ item.note }}</small>
+            </div>
+        </article>
+    </div>
+    {% endfor %}
+</section>
+
+<section class="row g-3">
+    <div class="col-12 col-lg-7">
+        <article class="card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="section-title mb-0">Recent projects</h2>
+                    <a href="{% url 'frontend:projects' %}" class="small">View all</a>
+                </div>
+                {% for project in recent_projects %}
+                <div class="project-row">
+                    <div>
+                        <a href="{% url 'frontend:project_detail' project.id %}">{{ project.name }}</a>
+                        <small class="d-block text-muted">{{ project.status }}</small>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: {{ project.progress }}%;"></div>
+                        </div>
+                        <span>{{ project.progress }}%</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </article>
+    </div>
+    <div class="col-12 col-lg-5">
+        <article class="card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="section-title mb-0">Upcoming tasks</h2>
+                    <a href="{% url 'frontend:tasks' %}" class="small">Open tasks</a>
+                </div>
+                <ul class="list-unstyled task-list mb-0">
+                    {% for task in upcoming_tasks %}
+                    <li>
+                        <div>
+                            <strong>{{ task.title }}</strong>
+                            <small class="d-block text-muted">Due {{ task.due }}</small>
+                        </div>
+                        <span class="badge-priority {{ task.priority|lower }}">{{ task.priority }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "frontend/base.html" %}
+
+{% block title %}Projects{% endblock %}
+{% block page_heading %}Projects{% endblock %}
+{% block page_subtitle %}Placeholder list for visual development{% endblock %}
+
+{% block page_nav %}
+<nav class="page-nav" aria-label="Page shortcuts">
+    <a href="{% url 'frontend:dashboard' %}">Dashboard</a>
+    <span>/</span>
+    <span>Projects</span>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Owner</th>
+                        <th>Status</th>
+                        <th>Tasks</th>
+                        <th>Due date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td><a href="{% url 'frontend:project_detail' project.id %}">{{ project.name }}</a></td>
+                        <td>{{ project.owner }}</td>
+                        <td><span class="status-pill">{{ project.status }}</span></td>
+                        <td>{{ project.tasks }}</td>
+                        <td>{{ project.due }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p class="hint-text mb-0">This table uses static sample data. Database integration will be added later.</p>
+    </div>
+</div>
+{% endblock %}

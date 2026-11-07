@@ -1,0 +1,207 @@
+{% extends "frontend/public_base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="public-container hero-grid">
+        <div>
+            <p class="eyebrow">Academic project management</p>
+            <h1>Plan projects, track tasks, and stay on schedule with ProjectHub.</h1>
+            <p class="hero-lead">ProjectHub is a web-based workspace for student teams. It brings projects, tasks, calendars, and a simple AI assistant together in one clean dashboard.</p>
+            <div class="hero-actions">
+                <a href="{% url 'frontend:login' %}" class="btn btn-primary btn-lg">Get Started</a>
+                <a href="#features" class="btn btn-outline-secondary btn-lg">Explore features</a>
+            </div>
+        </div>
+        <aside class="card hero-preview">
+            <div class="card-body">
+                <p class="metric-label">Workspace preview</p>
+                <div class="hero-preview-stats">
+                    <div>
+                        <strong>8</strong>
+                        <span>Projects</span>
+                    </div>
+                    <div>
+                        <strong>24</strong>
+                        <span>Open tasks</span>
+                    </div>
+                    <div>
+                        <strong>68%</strong>
+                        <span>On track</span>
+                    </div>
+                </div>
+                <div class="project-row">
+                    <div>
+                        <strong>Campus Portal Redesign</strong>
+                        <small class="d-block text-muted">In Progress</small>
+                    </div>
+                    <span>72%</span>
+                </div>
+                <div class="project-row">
+                    <div>
+                        <strong>Exam Scheduler</strong>
+                        <small class="d-block text-muted">In Progress</small>
+                    </div>
+                    <span>45%</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<section class="public-section" id="features">
+    <div class="public-container">
+        <h2 class="public-heading">Key features</h2>
+        <p class="public-intro">The tools you need to manage college and team work without switching between scattered notes.</p>
+        <div class="row g-3">
+            <div class="col-12 col-md-6 col-xl-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <h3 class="section-title">Projects</h3>
+                        <p class="mb-0">Keep every assignment, group project, and deadline in one organised list.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <h3 class="section-title">Tasks</h3>
+                        <p class="mb-0">See owners, due dates, and priority so the next step is always clear.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <h3 class="section-title">Calendar</h3>
+                        <p class="mb-0">Review meetings, demos, and submission dates in a simple month view.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <h3 class="section-title">Dashboard</h3>
+                        <p class="mb-0">Get a quick snapshot of progress before you open a project in detail.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-section-alt" id="how-it-works">
+    <div class="public-container">
+        <h2 class="public-heading">How it works</h2>
+        <p class="public-intro">A straightforward path from planning to delivery, designed for a student project team.</p>
+        <div class="row g-3">
+            <div class="col-12 col-md-6 col-lg-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <p class="step-number">1</p>
+                        <h3 class="section-title">Enter the workspace</h3>
+                        <p class="mb-0">Open ProjectHub from the landing page and continue with the demo login.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <p class="step-number">2</p>
+                        <h3 class="section-title">Review projects</h3>
+                        <p class="mb-0">Use the dashboard and project list to see status, owners, and progress.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <p class="step-number">3</p>
+                        <h3 class="section-title">Track daily work</h3>
+                        <p class="mb-0">Check tasks and the calendar so deadlines do not get missed.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <p class="step-number">4</p>
+                        <h3 class="section-title">Ask for a summary</h3>
+                        <p class="mb-0">Use the AI assistant page to preview how status updates can be generated later.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section" id="ai-assistance">
+    <div class="public-container">
+        <div class="row g-3 align-items-stretch">
+            <div class="col-12 col-lg-6">
+                <h2 class="public-heading">AI assistance</h2>
+                <p>ProjectHub includes an AI assistant area for summaries, weekly updates, and quick reminders about overdue work.</p>
+                <p class="mb-0">The current screen is a frontend preview. Sending messages is disabled until the AI backend is connected.</p>
+            </div>
+            <div class="col-12 col-lg-6">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <div class="chat-thread mb-0">
+                            <div class="chat-bubble user">
+                                <small>User</small>
+                                <p class="mb-0">Summarize the Campus Portal Redesign status.</p>
+                            </div>
+                            <div class="chat-bubble assistant">
+                                <small>Assistant</small>
+                                <p class="mb-0">This is a placeholder reply. The AI backend will be connected later.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-section-alt" id="about">
+    <div class="public-container">
+        <h2 class="public-heading">About the application</h2>
+        <p class="public-intro">ProjectHub is being built as a BCA academic project using Django templates, HTML, CSS, JavaScript, and Bootstrap.</p>
+        <div class="row g-3">
+            <div class="col-12 col-md-4">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <h3 class="section-title">Purpose</h3>
+                        <p class="mb-0">Help teams organise project work in a single, easy-to-use web application.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-4">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <h3 class="section-title">Current stage</h3>
+                        <p class="mb-0">Pages use mock data so the interface can be designed and tested before database integration.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-md-4">
+                <article class="card h-100">
+                    <div class="card-body">
+                        <h3 class="section-title">Coming later</h3>
+                        <p class="mb-0">Real login, saved projects, and AI responses will be added in later development stages.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="get-started">
+    <div class="public-container cta-box">
+        <h2 class="public-heading mb-2">Ready to open the workspace?</h2>
+        <p>Continue with the demo login to view the dashboard, projects, tasks, calendar, and AI assistant screens.</p>
+        <a href="{% url 'frontend:login' %}" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</section>
+{% endblock %}

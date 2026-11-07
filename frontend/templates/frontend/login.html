@@ -1,0 +1,27 @@
+{% extends "frontend/public_base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="auth-card card">
+        <div class="card-body">
+            <h1 class="auth-title">Sign in to ProjectHub</h1>
+            <p class="hint-text">Demo login only. Any email and password will open the dashboard.</p>
+            <form method="post" action="{% url 'frontend:login' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label" for="loginIdentity">Email or username</label>
+                    <input class="form-control" id="loginIdentity" name="identity" type="text" placeholder="demo.user@college.edu" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <input class="form-control" id="loginPassword" name="password" type="password" placeholder="Enter password" required>
+                </div>
+                <button class="btn btn-primary w-100" type="submit">Login</button>
+            </form>
+            <p class="auth-switch">New user? <a href="{% url 'frontend:signup' %}">Sign up</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

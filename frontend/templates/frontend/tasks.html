@@ -1,0 +1,49 @@
+{% extends "frontend/base.html" %}
+
+{% block title %}Tasks{% endblock %}
+{% block page_heading %}Tasks{% endblock %}
+{% block page_subtitle %}Sample tasks shown for layout testing{% endblock %}
+
+{% block page_nav %}
+<nav class="page-nav" aria-label="Page shortcuts">
+    <a href="{% url 'frontend:dashboard' %}">Dashboard</a>
+    <span>/</span>
+    <a href="{% url 'frontend:projects' %}">Projects</a>
+    <span>/</span>
+    <span>Tasks</span>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Project</th>
+                        <th>Assignee</th>
+                        <th>Due</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.project }}</td>
+                        <td>{{ task.assignee }}</td>
+                        <td>{{ task.due }}</td>
+                        <td><span class="status-pill">{{ task.status }}</span></td>
+                        <td><span class="badge-priority {{ task.priority|lower }}">{{ task.priority }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p class="hint-text mb-0">Filters, assignment, and status updates will be connected to the backend later.</p>
+    </div>
+</div>
+{% endblock %}

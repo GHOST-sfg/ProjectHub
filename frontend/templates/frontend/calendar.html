@@ -1,0 +1,41 @@
+{% extends "frontend/base.html" %}
+
+{% block title %}Calendar{% endblock %}
+{% block page_heading %}Calendar{% endblock %}
+{% block page_subtitle %}{{ month_label }} · placeholder schedule{% endblock %}
+
+{% block content %}
+<div class="row g-3">
+    <div class="col-12 col-lg-8">
+        <article class="card">
+            <div class="card-body">
+                <h2 class="section-title">Month view</h2>
+                <div class="calendar-wrap">
+                <div class="calendar-grid">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                    {% for day in calendar_days %}
+                    <div class="calendar-cell">{{ day }}</div>
+                    {% endfor %}
+                </div>
+                </div>
+                <p class="hint-text mb-0 mt-3">This is a static grid for visual design. Real dates will come from the backend later.</p>
+            </div>
+        </article>
+    </div>
+    <div class="col-12 col-lg-4">
+        <article class="card">
+            <div class="card-body">
+                <h2 class="section-title">Upcoming events</h2>
+                <ul class="list-unstyled event-list mb-0">
+                    {% for event in events %}
+                    <li>
+                        <strong>{{ event.title }}</strong>
+                        <small class="d-block text-muted">{{ event.date }} · {{ event.project }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "frontend/base.html" %}
+
+{% block title %}Settings{% endblock %}
+{% block page_heading %}Settings{% endblock %}
+{% block page_subtitle %}Placeholder preferences for the demo user{% endblock %}
+
+{% block page_nav %}
+<nav class="page-nav" aria-label="Page shortcuts">
+    <a href="{% url 'frontend:dashboard' %}">Dashboard</a>
+    <span>/</span>
+    <span>Settings</span>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="row g-3">
+    <div class="col-12 col-lg-6">
+        <article class="card">
+            <div class="card-body">
+                <h2 class="section-title">Profile</h2>
+                <div class="mb-3">
+                    <label class="form-label" for="fullName">Full name</label>
+                    <input class="form-control" id="fullName" type="text" value="{{ profile.name }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" id="email" type="email" value="{{ profile.email }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="role">Role</label>
+                    <input class="form-control" id="role" type="text" value="{{ profile.role }}" disabled>
+                </div>
+                <button class="btn btn-primary" type="button" disabled>Save changes</button>
+            </div>
+        </article>
+    </div>
+    <div class="col-12 col-lg-6">
+        <article class="card">
+            <div class="card-body">
+                <h2 class="section-title">Preferences</h2>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="emailAlerts" checked disabled>
+                    <label class="form-check-label" for="emailAlerts">Email alerts for due dates</label>
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="compactView" disabled>
+                    <label class="form-check-label" for="compactView">Compact table view</label>
+                </div>
+                <p class="hint-text mb-0">Authentication and saved settings will be added in a later stage.</p>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}

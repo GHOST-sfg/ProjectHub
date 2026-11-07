@@ -1,0 +1,95 @@
+{% extends "frontend/base.html" %}
+
+{% block title %}{{ project.name }}{% endblock %}
+{% block page_heading %}{{ project.name }}{% endblock %}
+{% block page_subtitle %}Project #{{ project.id }} · mock detail page{% endblock %}
+
+{% block page_nav %}
+<nav class="page-nav" aria-label="Breadcrumb">
+    <a href="{% url 'frontend:dashboard' %}">Dashboard</a>
+    <span>/</span>
+    <a href="{% url 'frontend:projects' %}">Projects</a>
+    <span>/</span>
+    <span>{{ project.name }}</span>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="row g-3">
+    <div class="col-12 col-lg-8">
+        <article class="card mb-3">
+            <div class="card-body">
+                <h2 class="section-title">Overview</h2>
+                <p>{{ project.description }}</p>
+                <div class="row g-3">
+                    <div class="col-6 col-md-3">
+                        <small class="text-muted d-block">Owner</small>
+                        <strong>{{ project.owner }}</strong>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <small class="text-muted d-block">Status</small>
+                        <strong>{{ project.status }}</strong>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <small class="text-muted d-block">Start</small>
+                        <strong>{{ project.start_date }}</strong>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <small class="text-muted d-block">Due</small>
+                        <strong>{{ project.due_date }}</strong>
+                    </div>
+                </div>
+                <div class="progress-wrap mt-4">
+                    <div class="progress">
+                        <div class="progress-bar" style="width: {{ project.progress }}%;"></div>
+                    </div>
+                    <span>{{ project.progress }}% complete</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-body">
+                <h2 class="section-title">Tasks</h2>
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Assignee</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in project.tasks %}
+                            <tr>
+                                <td>{{ task.title }}</td>
+                                <td>{{ task.assignee }}</td>
+                                <td><span class="status-pill">{{ task.status }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="col-12 col-lg-4">
+        <article class="card">
+            <div class="card-body">
+                <h2 class="section-title">Team</h2>
+                <ul class="list-unstyled member-list mb-0">
+                    {% for member in project.members %}
+                    <li>{{ member }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </article>
+        <div class="d-flex flex-wrap gap-2 mt-3">
+            <a href="{% url 'frontend:projects' %}" class="btn btn-outline-secondary">Back to projects</a>
+            <a href="{% url 'frontend:tasks' %}" class="btn btn-outline-secondary">View all tasks</a>
+            <a href="{% url 'frontend:dashboard' %}" class="btn btn-outline-secondary">Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
